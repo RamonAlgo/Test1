@@ -5,12 +5,15 @@ using UnityEngine;
 public class NauJugador : MonoBehaviour
 {
     public float _velNau;
-    
+    public float maxX;  // Límite máximo en el eje X
+    public float minX; // Límite mínimo en el eje X
 
     // Start is called before the first frame update
     void Start()
     {
-        _velNau = 5f;
+        _velNau =15f;
+        minX = -35f;
+        maxX = 35f;
     }
 
     // Update is called once per frame
@@ -24,6 +27,8 @@ public class NauJugador : MonoBehaviour
 
 
         novaPos += direccioIndicada * _velNau * Time.deltaTime;
+
+        novaPos.x = Mathf.Clamp(novaPos.x, minX, maxX);
 
         transform.position = novaPos;
         print(novaPos);
