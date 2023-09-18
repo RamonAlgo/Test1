@@ -6,20 +6,31 @@ public class NauJugador : MonoBehaviour
 {
     public float velocidadHorizontal;
     public float velocidadVertical;
-    public float maxX;  // Límite máximo en el eje X
-    public float minX; // Límite mínimo en el eje X
-    public float maxY;
-    public float minY;
+    private float maxX;  // Límite máximo en el eje X
+    private float minX; // Límite mínimo en el eje X
+    private float maxY;
+    private float minY;
 
     // Start is called before the first frame update
     void Start()
     {
-        velocidadHorizontal = 15f;
-        velocidadVertical = 10f;
-        minX = (float)-20.39f;
-        maxX = 20.39f;
-        minY = (float)-2.48f;  // Establece tus propios límites en el eje Y
-        maxY = 2.48f;   // Establece tus propios límites en el eje Y
+        velocidadHorizontal = 6f;
+        velocidadVertical = 6f;
+
+        // Calcula los límites basados en el tamaño de la pantalla
+        float screenAspect = (float)Screen.width / Screen.height;
+        float cameraHeight = Camera.main.orthographicSize;
+        float cameraWidth = screenAspect * cameraHeight;
+
+        // Calcula el tamaño del jugador
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        float jugadorWidth = spriteRenderer.bounds.size.x / 2f;
+        float jugadorHeight = spriteRenderer.bounds.size.y / 2f;
+
+        minX = -cameraWidth + jugadorWidth;
+        maxX = cameraWidth - jugadorWidth;
+        minY = -cameraHeight + jugadorHeight;
+        maxY = cameraHeight - jugadorHeight;
     }
 
     // Update is called once per frame
@@ -28,7 +39,7 @@ public class NauJugador : MonoBehaviour
         float direccionHorizontal = Input.GetAxisRaw("Horizontal");
         float direccionVertical = Input.GetAxisRaw("Vertical");  // Obtén la entrada vertical
 
-        Vector2 direccionIndicada = new Vector2(direccionHorizontal, direccionVertical); // Utiliza ambas direcciones
+        Vector2 direccionIndicada = new Vector2(direccionHorizontal, direccionVertical).normalized; // Utiliza ambas direcciones
 
         Vector2 nuevaPosicion = transform.position;
 
@@ -39,6 +50,5 @@ public class NauJugador : MonoBehaviour
         nuevaPosicion.y = Mathf.Clamp(nuevaPosicion.y, minY, maxY);
 
         transform.position = nuevaPosicion;
-        print(nuevaPosicion);
     }
 }
