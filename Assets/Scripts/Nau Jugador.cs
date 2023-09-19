@@ -49,6 +49,28 @@ public class NauJugador : MonoBehaviour
         nuevaPosicion.x = Mathf.Clamp(nuevaPosicion.x, minX, maxX);
         nuevaPosicion.y = Mathf.Clamp(nuevaPosicion.y, minY, maxY);
 
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            shoot1();
+            shoot2();
+        }
+
         transform.position = nuevaPosicion;
+
+        
     }
+    private void shoot1()
+    {
+        GameObject bala = Instantiate(Resources.Load("Prefabs/Bala_1") as GameObject);
+        bala.transform.position = this.transform.position + new Vector3(-0.06f, 0.0f, 0.0f);
+
+
+    }
+    private void shoot2()
+    {
+        GameObject bala = Instantiate(Resources.Load("Prefabs/Bala_1") as GameObject);
+        bala.transform.position = this.transform.position + new Vector3(0.06f, 0.0f, 0.0f);
+
+    }
+
 }
