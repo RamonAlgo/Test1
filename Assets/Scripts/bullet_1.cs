@@ -27,4 +27,11 @@ public class bullet_1 : MonoBehaviour
             Destroy(gameObject); // Destruye la bala si supera el límite superior
         }
     }
+    private void OnTriggerEnter2D(Collider2D objecteTocat)
+    {
+        if (objecteTocat.tag == "Numero")
+        {
+            Destroy(gameObject);
+        }
+    }
 }

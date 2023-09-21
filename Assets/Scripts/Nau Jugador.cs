@@ -73,5 +73,16 @@ public class NauJugador : MonoBehaviour
         GameObject bala = Instantiate(Resources.Load("Prefabs/Bala_1") as GameObject);
         bala.transform.position = this.transform.position + new Vector3(0.06f, 0.0f, 0.0f);
     }
+    private void OnTriggerEnter2D(Collider2D objecteTocat)
+    {
+        /*
+         * Quan la nau toqui un objecte, atuomaticament es cridara aquest metode
+         * El valor de objecteTocat, sera l'objecte que hem tocat (per exemple, un numero)
+         */
+        if (objecteTocat.tag=="Numero")
+        {
+            Destroy(gameObject);
+        }
+    }
 
 }
