@@ -10,6 +10,8 @@ public class NauJugador : MonoBehaviour
     private float minX; // Límite mínimo en el eje X
     private float maxY;
     private float minY;
+    private float tiempoUltimoDisparo;
+    private float intervaloEntreDisparos = 0.05f;
 
     // Start is called before the first frame update
     void Start()
@@ -52,25 +54,24 @@ public class NauJugador : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             shoot1();
-            shoot2();
+            shoot2(); 
         }
 
         transform.position = nuevaPosicion;
 
         
     }
+ 
     private void shoot1()
     {
         GameObject bala = Instantiate(Resources.Load("Prefabs/Bala_1") as GameObject);
         bala.transform.position = this.transform.position + new Vector3(-0.06f, 0.0f, 0.0f);
-
-
     }
+    
     private void shoot2()
     {
         GameObject bala = Instantiate(Resources.Load("Prefabs/Bala_1") as GameObject);
         bala.transform.position = this.transform.position + new Vector3(0.06f, 0.0f, 0.0f);
-
     }
 
 }
