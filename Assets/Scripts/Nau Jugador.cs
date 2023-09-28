@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -84,9 +85,13 @@ public class NauJugador : MonoBehaviour
         {
             GameObject explosio = Instantiate(_PrefabExplosio);
             explosio.transform.position = transform.position;
-            Destroy(gameObject);
-
+            //Destroy(gameObject);
+            GameObject.Find("GameManager").GetComponent<GameManager>().SetEstatGameManager(GameManager.EstatsGameManager.GameOver);
         }
     }
 
+    internal static object Find(string v)
+    {
+        throw new NotImplementedException();
+    }
 }

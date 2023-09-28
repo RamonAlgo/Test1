@@ -13,7 +13,7 @@ public class Numeros : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _vel = 2;
+        _vel = 50f;
     
         System.Random aleatori = new System.Random();
         _valorNumero = aleatori.Next(0,10);//Aleatori ebtre 0 i 9

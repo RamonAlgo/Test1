@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Generadornums : MonoBehaviour
 {
+    
     public GameObject _PrefabNumero;
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("GenerarNumero",1f,3f);
+        InvokeRepeating("GenerarNumero",1f,0.05f);
     }
 
     // Update is called once per frame
