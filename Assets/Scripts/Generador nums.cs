@@ -23,9 +23,7 @@ public class Generadornums : MonoBehaviour
         Vector2 costatInferiorEsquerra = Camera.main.ViewportToWorldPoint(new Vector2(0f, 0f));
         
         numero.transform.position = new Vector2(
-            Random.Range(costatInferiorEsquerra.x, costatSuperiorDret.x),
-            costatSuperiorDret.y
-            );
+            Random.Range(costatInferiorEsquerra.x, costatSuperiorDret.x),costatSuperiorDret.y);
         
         
     }

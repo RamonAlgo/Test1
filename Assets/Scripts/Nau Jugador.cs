@@ -12,6 +12,7 @@ public class NauJugador : MonoBehaviour
     private float minY;
     private float tiempoUltimoDisparo;
     private float intervaloEntreDisparos = 0.05f;
+    public GameObject _PrefabExplosio;
 
     // Start is called before the first frame update
     void Start()
@@ -61,7 +62,7 @@ public class NauJugador : MonoBehaviour
 
         
     }
- 
+    
     private void shoot1()
     {
         GameObject bala = Instantiate(Resources.Load("Prefabs/Bala_1") as GameObject);
@@ -81,7 +82,10 @@ public class NauJugador : MonoBehaviour
          */
         if (objecteTocat.tag=="Numero")
         {
+            GameObject explosio = Instantiate(_PrefabExplosio);
+            explosio.transform.position = transform.position;
             Destroy(gameObject);
+
         }
     }
 
